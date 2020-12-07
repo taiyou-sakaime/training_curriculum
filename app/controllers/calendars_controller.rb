@@ -15,7 +15,7 @@ class CalendarsController < ApplicationController
   private
 
   def plan_params
-    params.require(:content).permit(:date, :plan)
+    params.require(:plan).permit(:date, :plan)
   end
 
   def get_week
@@ -41,7 +41,7 @@ class CalendarsController < ApplicationController
       end
 
 
-      days = {month: (@todays_date + x).month, date: @todays_date.day + x, plans: today_plans, wday: wdays[wday_num] }
+      days = {month: (@todays_date + x).month, date: @todays_date.day + x, plans: today_plans, wday: wdays[wday_num + x]  }
       @week_days.push(days)
     end
 
